@@ -1,0 +1,22 @@
+version: "3"
+services:
+  react:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"  
+    volumes:
+      - /usr/src/app/node_modules # /usr/src/app/node_modeule은 사용하지 않겠다.
+      - ./:/usr/src/app # /usr/src/app에서 현재경로의 파일들을 사용하겠다.
+    stdin_open: true
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    command: ["npm", "run", "test"]                  
+
+
