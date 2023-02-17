@@ -12,5 +12,15 @@ before_install:
 script:
   - docker run -e CI=true jhcho7510/docker-react-app npm run test -- --coverage
 
-after_success:
-  - echo "Test success"
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northest-2"
+  app: "docker-react-app"
+  env: "DockerReactApp-env"
+  bucket_name: "elasticbeanstalk-ap-northest-2-123456789012"
+  bucket_path: "docker-react-app"
+  on:
+    branch: master #master브렌치에 반영이 될때만 aws에 반영하겠다.
+
+access_key_id: $AWS_ACCESS_KEY # AWS에서 생성한 access key를 Travis에 기록하며, 그것을 가져온다. AWS_ACCESS_KEY는 Travis에 입력한 값이다.
+secret_access_key_id: $AWS_SECRET_ACCESS_KEY 
