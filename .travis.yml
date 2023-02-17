@@ -22,5 +22,5 @@ deploy:
   on:
     branch: master #master브렌치에 반영이 될때만 aws에 반영하겠다.
 
-access_key_id: $AWS_ACCESS_KEY # AWS에서 생성한 access key를 Travis에 기록하며, 그것을 가져온다. AWS_ACCESS_KEY는 Travis에 입력한 값이다.
-secret_access_key_id: $AWS_SECRET_ACCESS_KEY 
+  access_key_id: $AWS_ACCESS_KEY # AWS에서 생성한 access key를 Travis에 기록하며, 그것을 가져온다. AWS_ACCESS_KEY는 Travis에 입력한 값이다.
+  secret_access_key_id: $AWS_SECRET_ACCESS_KEY 
